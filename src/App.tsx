@@ -1,25 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Container, Stack, Text, Textarea, Title } from "@mantine/core";
+import { useState } from "react";
 
 function App() {
+  const [translatedText, setTranslatedText] = useState<string>("");
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container p="lg">
+      <Stack>
+        <Title order={1} align="center">
+          Emojify your text
+        </Title>
+        <Title order={3}>From 🇬🇧 ...</Title>
+        <Textarea
+          autosize
+          minRows={4}
+          onChange={({ currentTarget }) =>
+            setTranslatedText(currentTarget.value)
+          }
+        />
+        <Title order={3}>... to 🤪</Title>
+        <Text>{translatedText}</Text>
+      </Stack>
+    </Container>
   );
 }
 
